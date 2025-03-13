@@ -35,7 +35,4 @@ function initApp() {
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initApp();
-    
-    // Log that the application is ready
-    console.log('AI Task Form Editor is ready!');
 });
