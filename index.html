@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Task Form Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Task Form Editor</h1>
+        
+        <div class="form-container">
+            <form id="aiTaskForm">
+                <div class="form-group">
+                    <label for="phase">Phase:</label>
+                    <select id="phase" name="phase" required>
+                        <option value="" disabled selected>Select a phase</option>
+                        <option value="requirements gathering">Requirements Gathering</option>
+                        <option value="requirements specification">Requirements Specification</option>
+                        <option value="architecture">Architecture</option>
+                        <option value="design">Design</option>
+                        <option value="coding">Coding</option>
+                        <option value="testing">Testing</option>
+                        <option value="deployment">Deployment</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="action">Action:</label>
+                    <select id="action" name="action" required disabled>
+                        <option value="" disabled selected>Select phase first</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="scope">Scope:</label>
+                    <select id="scope" name="scope" required disabled>
+                        <option value="" disabled selected>Select phase first</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="target">Target:</label>
+                    <select id="target" name="target" required disabled>
+                        <option value="" disabled selected>Select phase first</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="actionExperience">Action Experience:</label>
+                    <select id="actionExperience" name="actionExperience" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="aimodel">AI Model:</label>
+                    <select id="aimodel" name="aimodel" required>
+                        <option value="chatgpt 4o">ChatGPT 4o</option>
+                        <option value="chatgpt o1">ChatGPT o1</option>
+                        <option value="chatgpt o3-mini-high">ChatGPT o3-mini-high</option>
+                        <option value="chatgpt o3-mini">ChatGPT o3-mini</option>
+                        <option value="deepseek R1">Deepseek R1</option>
+                        <option value="mistral">Mistral</option>
+                        <option value="grok3">Grok3</option>
+                        <option value="gemini 2.0 flash">Gemini 2.0 Flash</option>
+                        <option value="claude 3.5 haiku">Claude 3.5 Haiku</option>
+                        <option value="claude 3.7 sonnet" selected>Claude 3.7 Sonnet</option>
+                        <option value="llama3.3">Llama3.3</option>
+                        <option value="mixtral:8x22b">Mixtral:8x22b</option>
+                        <option value="gemma2:27b">Gemma2:27b</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="toolOption">Tool Option:</label>
+                    <select id="toolOption" name="toolOption" required>
+                        <option value="online free">Online Free</option>
+                        <option value="online full">Online Full</option>
+                        <option value="open source">Open Source</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experienceWithTool">Experience with Tool:</label>
+                    <select id="experienceWithTool" name="experienceWithTool" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeAllocated">Time Allocated (h):</label>
+                    <input type="number" id="timeAllocated" name="timeAllocated" min="0" step="0.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeSavedEstimate">Time Saved Estimate (h):</label>
+                    <input type="number" id="timeSavedEstimate" name="timeSavedEstimate" min="0" step="0.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="qualityOfAiHelp">Quality of AI Help:</label>
+                    <select id="qualityOfAiHelp" name="qualityOfAiHelp" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="knowledgeAcquired">Knowledge Acquired:</label>
+                    <select id="knowledgeAcquired" name="knowledgeAcquired" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="genericFeelingNow">Generic Feeling - Now:</label>
+                    <select id="genericFeelingNow" name="genericFeelingNow" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="genericFeelingFuture">Generic Feeling - Future:</label>
+                    <select id="genericFeelingFuture" name="genericFeelingFuture" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="threatLevel">Threat Level:</label>
+                    <select id="threatLevel" name="threatLevel" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes:</label>
+                    <textarea id="notes" name="notes" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="aiLog">AI Log:</label>
+                    <textarea id="aiLog" name="aiLog" rows="10" placeholder="Paste your AI conversation log here"></textarea>
+                </div>
+            </form>
+
+            <div class="button-container">
+                <button id="downloadBtn" class="download-btn">Download Files</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/validation.js"></script>
+    <script src="scripts/fileHandler.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
