@@ -16,10 +16,7 @@ const validationRules = {
         target: [
             "n/a", 
             "md", 
-            "txt/doc", 
-            "uml object", 
-            "uml activity", 
-            "other diagram"
+            "txt/doc"
         ]
     },
     "requirements specification": {
@@ -41,15 +38,7 @@ const validationRules = {
         target: [
             "n/a", 
             "md", 
-            "txt/doc", 
-            "uml use case", 
-            "uml object", 
-            "uml activity", 
-            "uml sequence", 
-            "data flow diagram", 
-            "other diagram", 
-            "UX design", 
-            "test cases"
+            "txt/doc"
         ]
     },
     "architecture": {
@@ -164,21 +153,21 @@ const validationRules = {
             "dev-ops", 
             "container operations", 
             "network operations", 
-            "deployment"
+            "deployment",
         ],
         scope: [
             "frontend", 
             "backend", 
             "api", 
             "data management", 
-            "deployment scripts"
+            "deployment scripts",
+            "uml deployment"
         ],
         target: [
             "shell", 
             "yaml/json", 
             "sql", 
-            "nosql db", 
-            "uml deployment"
+            "nosql db"
         ]
     }
 };
