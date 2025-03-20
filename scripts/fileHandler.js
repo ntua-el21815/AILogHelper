@@ -76,17 +76,21 @@ function downloadFiles() {
     } else {
         // Create a zip file
         const zip = new JSZip();
-        // Get phase from form data and current date formatted as YYYY-MM-DD
+        // Get phase from form data and current date formatted as DD-MM-YYYY with time
         const phase = document.getElementById('aiTaskForm').phase.value;
-        const currentDate = new Date().toISOString().split('T')[0];
-        zip.file(`ai_answers_${phase}_${currentDate}.json`, jsonBlob);
-        zip.file(`ai_txt_${phase}_${currentDate}.txt`, textBlob);
+        const now = new Date();
+        const formattedDate = `${String(now.getDate()).padStart(2, '0')}-${String(now.getMonth() + 1).padStart(2, '0')}-${now.getFullYear()}`;
+        const formattedTime = `${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}`;
+        const dateTimeStamp = `${formattedDate}_${formattedTime}`;
+        
+        zip.file(`ai_answers_${phase}_${dateTimeStamp}.json`, jsonBlob);
+        zip.file(`ai_txt_${phase}_${dateTimeStamp}.txt`, textBlob);
         
         // Generate and download the zip file
         zip.generateAsync({ type: 'blob' })
             .then(function(content) {
                 const zipBlob = new Blob([content], { type: 'application/zip' });
-                downloadSingleFile(zipBlob, `ai_log_${phase}_${currentDate}.zip`);
+                downloadSingleFile(zipBlob, `ai_log_${phase}_${dateTimeStamp}.zip`);
             });
     }
 }
