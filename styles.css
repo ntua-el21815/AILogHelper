@@ -80,6 +80,21 @@ select:disabled {
     background-color: #3498db;
 }
 
+.upload-btn {
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #3498db;
+}
+
 select.error, input.error, textarea.error {
     border-color: #e74c3c;
 }
