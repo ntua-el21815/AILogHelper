@@ -101,71 +101,73 @@ function downloadFiles() {
 }
 
 function uploadToServer() {
-    // Then proceed with upload process
-    // Ask user for credentials
-    const endpointUrl = 'http://galileo.softlab.ntua.gr:5000/upload';
-    const username = prompt('Please enter your username:');
-    const password = prompt('Please enter your password:');
+    function uploadToServer() {
+        // Then proceed with upload process
+        // Ask user for credentials
+        const endpointUrl = 'http://galileo.softlab.ntua.gr:5000/upload';
+        const username = prompt('Please enter your username:');
+        const password = prompt('Please enter your password:');
 
-    zipBlob = window.generatedZipBlob;
-    phase = window.phase;
-    dateTimeStamp = window.dateTimeStamp;
-    // Check if zipBlob is available
-    if (!zipBlob) {
-        alert('No zip file generated. Please download the zip file first.');
-        return;
-    }
-    // Check if phase and dateTimeStamp are available
-    if (!phase || !dateTimeStamp) {
-        alert('Phase or dateTimeStamp is not available. Please download the zip file first.');
-        return;
-    }
-
-    // Only proceed if credentials were provided
-    if (!username || !password) {
-        alert('Username and password are required for uploading.');
-        return;
-    }
-
-    // Add credentials to form data
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    formData.append('file', zipBlob, `ai_log_${phase}_${dateTimeStamp}.zip`);
-
-    // Show initial upload status message
-    const statusMessage = document.createElement('div');
-    statusMessage.id = 'uploadStatus';
-    statusMessage.style.margin = '10px 0';
-    statusMessage.textContent = 'Uploading file to server...';
-    document.querySelector('form').appendChild(statusMessage);
-    
-    fetch(endpointUrl, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-        throw new Error(`Server responded with status: ${response.status}`);
+        zipBlob = window.generatedZipBlob;
+        phase = window.phase;
+        dateTimeStamp = window.dateTimeStamp;
+        // Check if zipBlob is available
+        if (!zipBlob) {
+            alert('No zip file generated. Please download the zip file first.');
+            return;
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Upload successful:', data);
-        statusMessage.textContent = 'File uploaded successfully!';
-        statusMessage.style.color = 'green';
-        setTimeout(() => {
-        statusMessage.remove();
-        }, 5000);
-    })
-    .catch(error => {
-        console.error('Error uploading file:', error);
-        statusMessage.textContent = `Upload failed: ${error.message}`;
-        statusMessage.style.color = 'red';
-        setTimeout(() => {
-        statusMessage.remove();
-        }, 5000);
-    });
+        // Check if phase and dateTimeStamp are available
+        if (!phase || !dateTimeStamp) {
+            alert('Phase or dateTimeStamp is not available. Please download the zip file first.');
+            return;
+        }
+
+        // Only proceed if credentials were provided
+        if (!username || !password) {
+            alert('Username and password are required for uploading.');
+            return;
+        }
+
+        // Add credentials to form data
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('file', zipBlob, `@ai_log_${phase}_${dateTimeStamp}.zip`);
+
+        // Show initial upload status message
+        const statusMessage = document.createElement('div');
+        statusMessage.id = 'uploadStatus';
+        statusMessage.style.margin = '10px 0';
+        statusMessage.textContent = 'Uploading file to server...';
+        document.querySelector('form').appendChild(statusMessage);
+        
+        fetch(endpointUrl, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Server responded with status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Upload successful:', data);
+            statusMessage.textContent = `Upload successful: ${data.message}`;
+            statusMessage.style.color = 'green';
+            setTimeout(() => {
+                statusMessage.remove();
+            }, 5000);
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
+            statusMessage.textContent = `Upload failed: ${error.message}`;
+            statusMessage.style.color = 'red';
+            setTimeout(() => {
+                statusMessage.remove();
+            }, 5000);
+        });
+    }
 }
 
 // Function to download a single file
